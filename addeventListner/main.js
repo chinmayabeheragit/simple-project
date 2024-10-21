@@ -4,9 +4,10 @@ const projectFormContainer = document.getElementById('projectFormContainer');
 const projectForm = document.getElementById('projectForm');
 const projectsContainer = document.querySelector('.projects');
 
-// Show form when "+" button is clicked
+// Show form and hide "+" button when "+" button is clicked
 addProjectButton.addEventListener('click', () => {
   projectFormContainer.classList.remove('hidden');
+  addProjectButton.classList.add('hidden');
 });
 
 // Handle form submission
@@ -35,6 +36,7 @@ projectForm.addEventListener('submit', (event) => {
         window.open(projectLink, '_blank');
       });
 
+      // Append the new image to the project container
       projectsContainer.insertBefore(projectImageElement, addProjectButton);
     };
 
@@ -44,4 +46,7 @@ projectForm.addEventListener('submit', (event) => {
   // Hide the form after submission and reset form fields
   projectFormContainer.classList.add('hidden');
   projectForm.reset();
+
+  // Show "+" button again after form submission
+  addProjectButton.classList.remove('hidden');
 });
